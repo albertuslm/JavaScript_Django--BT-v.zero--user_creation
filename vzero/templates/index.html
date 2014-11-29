@@ -1,0 +1,36 @@
+<html>
+<head>
+  <title>Demo v.Zero</title>
+
+  <!--Braintree.js is being loaded-->
+  <script src="https://js.braintreegateway.com/v2/braintree.js"></script>
+</head>
+<body>
+  <!--
+    Form where is going to be renderized the fields, created by Braintree to
+    get the information of the payment.
+  -->
+
+  <form action="/checkout" method="POST">
+    <p>First name:<input type="text" value="first name"></p>
+    <p>Last name:<input type="text" value="last name"></p>
+    <div id="dropin"></div>
+    <input type="submit" value="Create User & add this payment method">
+  </form>
+
+  <!--
+    Using the client_token, from server, to create the fields
+  -->
+
+  <script>
+    braintree.setup(
+      "{{client_token}}",
+      "dropin",
+      {
+        container:"dropin"
+      }
+    )
+  </script>
+
+</body>
+</html>
